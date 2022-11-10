@@ -5,7 +5,7 @@
 
 # Resumo do projeto
 Movies organizer é uma API para aplicações no estilo <i>wishlist</i> aonde o usúario pode adicionar filmes e séries que deseja assistir e manter um controle sobre eles, 
-como deixar notas e comentários após assistir algum filme, apagar algum dado a qualquer momento, listar os filmes cadastrados e filtra-los.
+como deixar notas e comentários após assistir algum filme, apagar algum dado a qualquer momento, listar os filmes cadastrados, filtra-los e muito mais.
 
 # :hammer: Funcionalidades do projeto
 
