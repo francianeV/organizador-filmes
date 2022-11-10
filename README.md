@@ -22,7 +22,6 @@ como deixar notas e comentários após assistir algum filme, apagar algum dado a
 ## ✔️ Técnicas e tecnologias utilizadas
 
 - ``TypeScript``
-- ``Node``
 - ``PostgreSQL``
 
 <br> 
