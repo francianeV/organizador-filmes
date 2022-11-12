@@ -1,6 +1,6 @@
 import { QueryResult } from "pg";
 import { connection } from "../database/db.js";
-import { FilmeEntity, Filme } from "../protocols/filme.js"
+import { FilmeEntity, Filme } from "../protocols/filme.js";
 
 async function findAll(): Promise<QueryResult<FilmeEntity>> {
     return connection.query(`
@@ -15,4 +15,12 @@ async function findAll(): Promise<QueryResult<FilmeEntity>> {
     `);
 }
 
-export { findAll };
+async function insertMovie(body: Filme): Promise<QueryResult<FilmeEntity>>{
+    return connection.query(`
+        INSERT INTO filmes (nome, genero, "plataformaId") 
+        VALUES ($1, $2, $3);`,
+        [body.nome, body.genero, body.plataformaId]
+    );
+}
+
+export { findAll, insertMovie };

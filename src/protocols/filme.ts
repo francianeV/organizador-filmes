@@ -1,10 +1,10 @@
 export type FilmeEntity = {
-    id: number,
+    id?: number,
     nome: string,
     genero: string,
     plataformaId: number,
-    status: boolean,
-    nota: string
+    status?: boolean,
+    nota?: string
 }
 
 export type Filme = Omit<FilmeEntity, "id">
