@@ -15,7 +15,7 @@ async function findAll(): Promise<QueryResult<FilmeEntity>> {
     `);
 }
 
-async function insertMovie(body: Filme): Promise<QueryResult<FilmeEntity>>{
+async function insereFilme(body: Filme): Promise<QueryResult<FilmeEntity>>{
     return connection.query(`
         INSERT INTO filmes (nome, genero, "plataformaId") 
         VALUES ($1, $2, $3);`,
@@ -23,4 +23,20 @@ async function insertMovie(body: Filme): Promise<QueryResult<FilmeEntity>>{
     );
 }
 
-export { findAll, insertMovie };
+async function updateFilme(nota:string, id: number): Promise<QueryResult> {
+    let avaliacao: string = '';
+
+    if(nota){
+        avaliacao = `, nota = '${nota}'`;
+    }
+    
+    return connection.query(`
+        UPDATE filmes SET "status" = TRUE ${avaliacao} WHERE id = $1;`,[id]
+    );
+}
+
+async function filmeById(id: number): Promise<QueryResult> {  
+    return connection.query(`SELECT * FROM filmes WHERE id = $1;`,[id]);
+}
+
+export { findAll, insereFilme, updateFilme, filmeById };

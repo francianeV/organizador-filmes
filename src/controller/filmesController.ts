@@ -8,7 +8,7 @@ async function findAll(req: Request, res: Response){
     try{
         const resultado = await filmesRepositories.findAll();
  
-        res.send(resultado.rows);
+        res.status(200).send(resultado.rows);
 
     }catch(err){
         console.log(err);
@@ -33,14 +33,40 @@ async function insert(req: Request, res: Response){
             return res.status(404).send({error_message: 'Id da plataforma não existe'});
         }
 
-        const novoFilme = await filmesRepositories.insertMovie(body);
+        await filmesRepositories.insereFilme(body);
 
-        res.send(novoFilme.rows);
+        res.send(201);
 
     }catch(err){
         res.sendStatus(500);
     }
 }
 
-export { findAll,insert };
+async function update (req: Request, res: Response) {
+    const id = req.params;
+    const nota = req.body;
+
+    if(Number.isNaN(Number(id.id))){
+        return res.status(400).send({error_message: 'id inválido'})
+    }
+
+    try{
+
+        const filmeExistente = await filmesRepositories.filmeById(Number(id.id));
+
+        if(filmeExistente.rowCount === 0){
+            return res.status(404).send({error_message: 'filme com id não existente'});
+        }
+
+        await filmesRepositories.updateFilme(nota.nota, Number(id.id));
+
+        res.sendStatus(204);
+
+    }catch(err){
+        console.log(err);
+        res.sendStatus(500);
+    }
+}
+
+export { findAll, insert, update};
     
