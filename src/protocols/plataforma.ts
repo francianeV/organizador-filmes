@@ -1,6 +1,6 @@
 export type PlataformaEntity = {
     id?: number,
-    name: string 
+    nome: string 
 };
 
 export type Plataforma = Omit<PlataformaEntity, "id">;
