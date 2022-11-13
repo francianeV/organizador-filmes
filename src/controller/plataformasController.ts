@@ -29,6 +29,31 @@ async function insere(req: Request, res: Response) {
     }   
 }
 
+async function deletar (req: Request, res: Response) {
+    const id: number = Number(req.params.id);
+
+    if(Number.isNaN(id)){
+        return res.status(400).send({error_message: 'id inválido'})
+    }
+
+    try{
+        const PlataformaExiste = await plataformasRepositores.findId(id);
+
+        if(PlataformaExiste.rowCount === 0){
+            return res.status(404).send({error_message: "plataforma inexistente"});
+        }
+
+        await plataformasRepositores.deletarPlataforma(id);
+
+        res.sendStatus(200);
+
+    }catch(err){
+        console.log(err);
+        res.sendStatus(500);
+    }
+}
+
 export {
-    insere
+    insere,
+    deletar
 }

@@ -16,8 +16,13 @@ async function inserePlataforma(body: Plataforma): Promise<QueryResult<Plataform
     );
 }
 
+async function deletarPlataforma(id: number): Promise<QueryResult>{
+    return connection.query(`DELETE FROM plataforma WHERE id = $1;`,[id]);
+}
+
 export { 
     findId, 
     findPlataforma,
-    inserePlataforma 
+    inserePlataforma,
+    deletarPlataforma 
 };
