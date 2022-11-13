@@ -53,7 +53,21 @@ async function deletar (req: Request, res: Response) {
     }
 }
 
+async function listarTudo(req: Request, res: Response){
+    
+    try{
+        const resultado = await plataformasRepositores.listaTudo();
+ 
+        res.status(200).send(resultado.rows);
+
+    }catch(err){
+        console.log(err);
+        res.sendStatus(500);
+    }
+}
+
 export {
     insere,
-    deletar
+    deletar,
+    listarTudo
 }

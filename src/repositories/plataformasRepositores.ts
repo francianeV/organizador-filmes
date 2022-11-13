@@ -20,9 +20,14 @@ async function deletarPlataforma(id: number): Promise<QueryResult>{
     return connection.query(`DELETE FROM plataforma WHERE id = $1;`,[id]);
 }
 
+async function listaTudo(): Promise<QueryResult<PlataformaEntity>> {
+    return connection.query(`SELECT id, nome AS plataforma FROM plataforma`);
+}
+
 export { 
     findId, 
     findPlataforma,
     inserePlataforma,
-    deletarPlataforma 
+    deletarPlataforma,
+    listaTudo, 
 };
