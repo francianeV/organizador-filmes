@@ -20,6 +20,10 @@ async function findAll(req: Request, res: Response){
 async function filtraFimes(req: Request, res: Response){ 
     const assistido:string = req.params.filtro;
 
+    if(assistido !== 'false' && assistido !== 'true'){
+        return res.status(404).send({error_message: 'entrada inválida'})
+    }
+
     try{
         const resultado = await filmesRepositories.filtraFilmes(assistido);
         
