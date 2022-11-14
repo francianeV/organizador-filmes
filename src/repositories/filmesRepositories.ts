@@ -28,7 +28,6 @@ async function filtraFilmes(assistido: string): Promise<QueryResult> {
         nota = `, nota AS comentarios`
     }
 
-    console.log(escolha)
     return connection.query(`
         SELECT 
             filmes.nome AS "Filme", 
