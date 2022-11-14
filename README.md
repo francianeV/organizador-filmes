@@ -47,7 +47,9 @@ npm run start
 
 ## 📁  Acesso ao projeto
 
-**Você pode acessar o <a href="https://github.com/francianeV/organizador-filmes"> código fonte do projeto</a> ou baixa-lo**
+**- Você pode acessar o código fonte do projeto <a href="https://github.com/francianeV/organizador-filmes">por aqui</a>**
+<br>
+**- Para acessar a documentação da API <a href="https://github.com/francianeV/organizador-filmes/blob/main/documentacao_API.md"> clique aqui</a>**
 
 <br><br>
 
